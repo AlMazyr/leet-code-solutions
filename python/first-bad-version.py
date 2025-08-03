@@ -26,16 +26,6 @@ def isBadVersion(version: int) -> bool:
     return True if version >= bad else False
 
 class Solution:
-    def firstBadVNonRec(self, st: int, end: int) -> int:
-        while (True):
-            if (st == end): return st
-            mid = (st + end) // 2
-            if (isBadVersion(mid)):
-                if (isBadVersion(mid-1) == False): return mid
-                end = mid
-            else:
-                st = mid+1
-
     def firstBadVersion(self, n: int) -> int:
         st = 1
         end = n
