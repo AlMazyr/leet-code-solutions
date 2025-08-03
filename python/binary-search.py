@@ -22,20 +22,21 @@ Explanation: 2 does not exist in nums so return -1
 
 class Solution:
     def Search(self, nums: List[int], target: int) -> int:
-        ln = len(nums)
-        if (ln == 0): return -1
-        if (ln == 1 and target == nums[0]):
-            return 0
-        elif (ln == 1): return -1
+        # Binary search
+        st = 0
+        end = len(nums)-1
+        res = -1
 
-        mid = ln // 2
-        if (nums[mid] == target):
-            return mid
-        elif (target < nums[mid]):
-            return self.Search(nums[:mid], target)
-        else:
-            res = self.Search(nums[mid:], target)
-            return res if res == -1 else mid + res
+        while (st <= end):
+            mid = st + ((end - st) // 2)
+            if (nums[mid] == target):
+                res = mid
+                break
+            elif (target < nums[mid]):
+                end = mid - 1
+            else:
+                st = mid + 1
+        return res        
 
 s = Solution()
 
